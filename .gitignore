@@ -25,6 +25,7 @@ pip-wheel-metadata/
 share/python-wheels/
 *.egg-info/
 data/
+weights/
 .installed.cfg
 *.egg
 MANIFEST

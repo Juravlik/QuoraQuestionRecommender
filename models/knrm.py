@@ -1,6 +1,7 @@
 from typing import Dict, List, Tuple, Union, Callable, Optional
 import numpy as np
 import torch
+import torch.nn.functional as F
 
 
 class GaussianKernel(torch.nn.Module):
@@ -87,14 +88,10 @@ class KNRM(torch.nn.Module):
 
     def _get_matching_matrix(self, query: torch.Tensor, doc: torch.Tensor) -> torch.FloatTensor:
 
-        query = self.embeddings(query)
-        doc = self.embeddings(doc)
-        query_norm = query / (query.norm(p=2, dim=-1, keepdim=True) + 1e-13)
-        doc_norm = doc / (doc.norm(p=2, dim=-1, keepdim=True) + 1e-13)
-        query_norm = query_norm.unsqueeze(0)
-        doc_norm = doc_norm.unsqueeze(0)
+        query = self.embeddings(query).unsqueeze(2)
+        doc = self.embeddings(doc).unsqueeze(1)
 
-        return torch.bmm(query_norm, doc_norm.transpose(-1, -2))
+        return F.cosine_similarity(query, doc, dim=-1)
 
     def _apply_kernels(self, matching_matrix: torch.FloatTensor) -> torch.FloatTensor:
         KM = []

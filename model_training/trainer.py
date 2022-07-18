@@ -1,7 +1,6 @@
 import string
 from collections import Counter
 from typing import Dict, List, Tuple, Union, Callable
-
 import nltk
 import numpy as np
 import math
@@ -9,6 +8,8 @@ import pandas as pd
 import torch
 import os
 import json
+from model_training.datasets import ValPairsDataset, TrainTripletsDataset, collate_fn
+from models.knrm import KNRM
 
 
 class Trainer:
@@ -144,7 +145,7 @@ class Trainer:
         emb_matrix, vocab, unk_words = self.create_glove_emb_from_file(
             self.glove_vectors_path, self.all_tokens, self.random_seed, self.emb_rand_uni_bound)
         torch.manual_seed(self.random_seed)
-        knrm = KNRM(emb_matrix, freeze_embeddings=self.freeze_knrm_embeddings,
+        knrm = KNRM(emb_matrix, freeze_embeddings=self.freeze_knrm_embeddings, mlp_weights=None,
                     out_layers=self.knrm_out_mlp, kernel_num=self.knrm_kernel_num)
         return knrm, vocab, unk_words
 
