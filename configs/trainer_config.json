@@ -7,8 +7,8 @@
   "knrm_kernel_num": 21,
   "knrm_out_mlp": [10, 5],
   "dataloader_bs": 1024,
-  "train_lr": 0.02,
-  "change_train_loader_ep": 10,
-  "n_epochs": 20,
+  "train_lr": 0.01,
+  "change_train_loader_ep": 20,
+  "n_epochs": 10,
   "emb_size": 50
 }

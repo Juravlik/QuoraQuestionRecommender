@@ -1,7 +1,6 @@
 from model_training.trainer import Trainer
 import json
 
-
 glue_qqp_dir = "./data/QQP"
 glove_vectors_path = "./data/glove.6B.50d.txt"
 

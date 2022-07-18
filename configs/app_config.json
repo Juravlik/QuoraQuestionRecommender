@@ -1,0 +1,7 @@
+{
+  "emb_path_knrm": "./weights/embeddings.bin",
+  "mlp_path": "./weights/mlp.bin",
+  "vocab_path": "./weights/vocab.json",
+  "port": 11000,
+  "host": "127.0.0.1"
+}

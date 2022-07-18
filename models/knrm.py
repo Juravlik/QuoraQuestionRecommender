@@ -88,10 +88,18 @@ class KNRM(torch.nn.Module):
 
     def _get_matching_matrix(self, query: torch.Tensor, doc: torch.Tensor) -> torch.FloatTensor:
 
-        query = self.embeddings(query).unsqueeze(2)
-        doc = self.embeddings(doc).unsqueeze(1)
+        query = self.embeddings(query)
+        doc = self.embeddings(doc)
+        query_norm = query / (query.norm(p=2, dim=-1, keepdim=True) + 1e-13)
+        doc_norm = doc / (doc.norm(p=2, dim=-1, keepdim=True) + 1e-13)
 
-        return F.cosine_similarity(query, doc, dim=-1)
+        if len(query_norm.size()) < 3:
+            query_norm = query_norm.unsqueeze(0)
+            doc_norm = doc_norm.unsqueeze(0)
+
+        cosine_similarity = torch.bmm(query_norm, doc_norm.transpose(-1, -2))
+
+        return cosine_similarity
 
     def _apply_kernels(self, matching_matrix: torch.FloatTensor) -> torch.FloatTensor:
         KM = []
