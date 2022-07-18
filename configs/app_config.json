@@ -2,6 +2,8 @@
   "emb_path_knrm": "./weights/embeddings.bin",
   "mlp_path": "./weights/mlp.bin",
   "vocab_path": "./weights/vocab.json",
+  "num_suggestions": 10,
+  "num_candidates": 30,
   "port": 11000,
   "host": "127.0.0.1"
 }

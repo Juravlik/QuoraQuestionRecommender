@@ -35,5 +35,6 @@ def update_index():
     return jsonify(status="ok", index_size=index_size)
 
 
-handler = Handler(config['emb_path_knrm'], config['mlp_path'], config['vocab_path'])
+handler = Handler(config['emb_path_knrm'], config['mlp_path'], config['vocab_path'],
+                  num_suggestions=config['num_suggestions'], num_candidates=config['num_candidates'])
 app.run(debug=False, port=config['port'], host=config['host'])
