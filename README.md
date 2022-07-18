@@ -1,4 +1,4 @@
-## Question recommender system, based on Faiss index and KNRM ranker
+## Question recommender system based on Faiss index and KNRM ranker
 ***Notebook [examples.ipynb](examples.ipynb) contains examples of using Flask api***
 
 ### 1. Faiss index part:
@@ -98,3 +98,5 @@ answer:
     ]
 }
 ```
+
+***Notebook [examples.ipynb](examples.ipynb) contains examples of using Flask api***
