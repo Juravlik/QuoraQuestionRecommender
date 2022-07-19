@@ -20,9 +20,9 @@ For the input question the **30** closest questions (by euclidian distance) are 
   - download both folders from [google drive](https://drive.google.com/drive/folders/1rQoE-CklSySBZP9pGUjvabb3SVWjXxAB?usp=sharing) to repo folder
   - `$ pip install -r requirements.txt`
 ##### 2*. Train model (it takes about 10 min, also it is not necessarily, pretrained weights are already in weights folder)
-- `$ python train_model.py` in case if you want to train model by yourself (it takes about 10 min). Also you can change some parameters in [trainer_config](configs/trainer_config.json)
+`$ python train_model.py` in case if you want to train model by yourself (it takes about 10 min). Also you can change some parameters in [trainer_config](configs/trainer_config.json)
 ##### 3. Run flask server:
-- `$ python app.py`
+`$ python app.py`
 
 ##### 4. `/ping` until status "ok"
 
@@ -35,7 +35,7 @@ For the input question the **30** closest questions (by euclidian distance) are 
   "queries" : ["How many stars are in the sky?", ..., "What is the easiest language?"]
 }
 ```
-##### 7. return:
+##### 7. Return:
 **answer structure:**
 ```python
 {
